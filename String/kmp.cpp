@@ -23,21 +23,12 @@ vector<int> createLps(string pattern)
     while (i < pattern.size())
     {
         if (pattern[index] == pattern[i])
-        {
-            arr[i] = index + 1;
-            index++;
-            i++;
-        }
+            arr[i++] = ++index;
+
+        else if (index != 0)
+            index = arr[--index];
         else
-        {
-            if (index != 0)
-                index = arr[index - 1];
-            else
-            {
-                arr[i] = index;
-                i++;
-            }
-        }
+            arr[i++] = index;
     }
 
     return arr;
@@ -46,6 +37,8 @@ vector<int> createLps(string pattern)
 void kmp(string text, string pattern)
 {
     vector<int> lps = createLps(pattern);
+
+    print_v(lps);
 
     int i = 0, j = 0;
 
@@ -61,9 +54,7 @@ void kmp(string text, string pattern)
         else
         {
             if (j != 0)
-            {
                 j = lps[j - 1];
-            }
             else
                 i++;
         }
@@ -75,18 +66,17 @@ void kmp(string text, string pattern)
         }
     }
 
-    if (isFound){
+    if (isFound)
         cout << "Found" << endl;
-    }else {
+    else
         cout << "Not Found" << endl;
-    }
 }
 
 int main()
 {
 
     string text = "ababaaab";
-    string pattern = "abca";
+    string pattern = "abaa";
 
     kmp(text, pattern);
 
