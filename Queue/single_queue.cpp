@@ -50,7 +50,7 @@ void dequeue(Node *&head)
     delete delNode;
 }
 
-void enqueue(int value, Node *&head)
+void enqueue(Node *&head, int value)
 {
 
     Node *newNode = new Node(value);
@@ -75,20 +75,20 @@ int main()
 {
     Node *head = NULL;
 
-    enqueue(1, head);
-    enqueue(2, head);
-    enqueue(3, head);
-    enqueue(4, head);
+    for (int i = 0; i < 10; i++)
+    {
+        enqueue(head, i + 1);
+    }
 
     print(head);
 
     cout << endl;
+    cout << endl;
 
-    dequeue(head);
-    dequeue(head);
-    dequeue(head);
-    dequeue(head);
-    dequeue(head);
+    for (int i = 0; i < 3; i++)
+    {
+        dequeue(head);
+    }
     print(head);
 
     cout << endl;
