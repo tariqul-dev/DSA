@@ -136,19 +136,23 @@ void insertBeforeValue(Node *&head, int value, Node *second)
     if (temp == NULL)
     {
         cout << "Not exists" << endl;
+        return;
     }
 
-    // if (temp->prev == NULL){
-    //     Node *temp3 = second;
+    if (temp->prev == NULL)
+    {
+        Node *temp3 = second;
 
-    //     while (temp3->next != NULL)
-    //     {
-    //         temp3 = temp3->next;
-    //     }
+        while (temp3->next != NULL)
+        {
+            temp3 = temp3->next;
+        }
 
-    //     temp
-    
-    // }
+        temp->prev = temp3;
+        temp3->next = temp;
+        head = second;
+        return;
+    }
 
     second->prev = temp->prev;
     temp->prev->next = second;
@@ -184,9 +188,10 @@ int main()
     }
 
     print(second);
+
     cout << endl;
 
-    insertBeforeValue(head, 1, 55);
+    insertBeforeValue(head, 1, second);
     print(head);
 
     return 0;
