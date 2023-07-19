@@ -34,12 +34,12 @@ void print(Node *root)
 
 int isBST(Node *root)
 {
-    static Node *prev = NULL;
 
     cout << root->data << endl;
-
     if (root == NULL)
         return 1;
+
+    static Node *prev = NULL;
 
     if (!isBST(root->left))
         return 0;
@@ -56,7 +56,7 @@ int main()
 {
 
     Node *n1 = new Node(5);
-    Node *n2 = new Node(3);
+    Node *n2 = new Node(7);
     Node *n3 = new Node(6);
     Node *n4 = new Node(1);
     Node *n5 = new Node(4);
