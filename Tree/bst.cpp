@@ -86,10 +86,17 @@ Node *searchForInsert(Node *root, int data)
     return prev;
 }
 
-void insert(Node *root, int data)
+void insert(Node *&root, int data)
 {
-    Node *prev = searchForInsert(root, data);
     Node *newNode = new Node(data);
+
+    if (root == NULL)
+    {
+        root = newNode;
+        return;
+    }
+
+    Node *prev = searchForInsert(root, data);
 
     if (prev != NULL)
     {
@@ -107,7 +114,7 @@ void insert(Node *root, int data)
 int main()
 {
 
-    Node *n1 = new Node(6);
+    Node *root = NULL;
 
     // Node *n1 = new Node(5);
     // Node *n2 = new Node(3);
@@ -121,34 +128,19 @@ int main()
     // n2->left = n4;
     // n2->right = n5;
 
-    print(n1);
-    cout << endl;
+    int n;
+    cin >> n;
 
-    if (isBST(n1))
-        cout << "This is BST" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        int data;
+        cin >> data;
+        insert(root, data);
+    }
 
-    else
-        cout << "This is not BST" << endl;
-
-    int key = 5;
-
-    if (search(n1, key))
-        cout << "Found: " << key << endl;
-    else
-        cout << "Not Found: " << key << endl;
-
-    insert(n1, 4);
-    insert(n1, 9);
-    insert(n1, 2);
-    insert(n1, 3);
-    insert(n1, 5);
-    insert(n1, 10);
-    insert(n1, 7);
-    insert(n1, 12);
+    print(root);
 
     cout << endl;
-
-    print(n1);
 
     return 0;
 }
