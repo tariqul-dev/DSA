@@ -2,6 +2,15 @@
 
 using namespace std;
 
+void print(vector<int> nums, int size, int index = 0)
+{
+    if (index == size)
+        return;
+    cout << nums[index] << " ";
+
+    print(nums, size, index + 1);
+}
+
 void solve(vector<int> &nums, vector<vector<int>> &result, vector<int> &temp, map<int, bool> &helper)
 {
     if (temp.size() == nums.size())
@@ -25,24 +34,39 @@ void solve(vector<int> &nums, vector<vector<int>> &result, vector<int> &temp, ma
     }
 }
 
-int main()
+vector<vector<int>> permute(vector<int> nums)
 {
-    vector<int> nums = {1, 2, 3};
     vector<vector<int>> result;
     vector<int> temp;
     map<int, bool> helper;
 
     solve(nums, result, temp, helper);
 
+    return result;
+}
+
+int main()
+{
+    vector<int> nums = {1, 2, 3};
+
+    vector<vector<int>> result = permute(nums);
+
     for (int i = 0; i < result.size(); i++)
     {
-        for (int j = 0; j < result[i].size(); j++)
-        {
-            cout << result[i][j] << " ";
-        }
+        print(result[i], result[i].size());
 
         cout << endl;
     }
+
+    /*
+    1 2 3
+    1 3 2
+    2 1 3
+    2 3 1
+    3 1 2
+    3 2 1
+
+    */
 
     return 0;
 }
