@@ -74,16 +74,54 @@ class Tree:
     def lca(self, n1, n2):
         return self._lca(self.root, n1, n2)
 
+    def _search(self, root, key, path):
+        if root is None:
+            return None
+
+        if root.data == key:
+            path.append(root.data)
+            print(root.data)
+            print('found')
+            return root, path
+
+        if key < root.data:
+            path.append(root.data)
+            print(f'{root.data}', end='->')
+            self._search(root.left, key, path)
+
+        else:
+            path.append(root.data)
+            print(f'{root.data}', end='->')
+            self._search(root.right, key, path)
+
+        return root, path
+
+    def search(self, key):
+        path = []
+        root, path = self._search(self.root, key, path)
+
+        if root:
+            print(f'{key} is found')
+            print(f"{'->'.join([str(p) for p in path])}")
+        else:
+            print(f'{key} is not found')
+
 
 if __name__ == '__main__':
     tree = Tree()
 
-    tree.insert(5)
-    tree.insert(7)
+    tree.insert(6)
+    tree.insert(4)
+    tree.insert(8)
+    tree.insert(3)
     tree.insert(2)
+    tree.insert(1)
+    tree.insert(7)
+    tree.insert(10)
+    tree.insert(11)
 
     tree.print_inorder()
     print()
-    tree.print_preorder()
-    print()
-    tree.print_post_order()
+
+
+    tree.search(11)
