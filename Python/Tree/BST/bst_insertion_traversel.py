@@ -113,7 +113,6 @@ class Tree:
             return self._successive_ancestor(root.left)
 
     def _delete_node(self, root, key):
-        print(f'current: {root.data}')
         if not root:
             return root
 
@@ -129,11 +128,9 @@ class Tree:
             if not root.right:
                 return root.left
 
-            del_node = self._successive_ancestor(root.right)
-            root.data = del_node.data
-            del del_node
-            print(f'data: {root.data}')
-            self._delete_node(root.right, root.data)
+            root.data = self._successive_ancestor(root.right).data
+
+            root.right = self._delete_node(root.right, root.data)
 
         return root
 
@@ -146,32 +143,32 @@ class Tree:
 if __name__ == '__main__':
     tree = Tree()
 
-    tree.insert(8)
-    tree.insert(4)
-    tree.insert(2)
-    tree.insert(1)
-    tree.insert(3)
-    tree.insert(6)
-    tree.insert(5)
-    tree.insert(7)
-    tree.insert(10)
-    tree.insert(14)
-    tree.insert(15)
-    tree.insert(9)
-    tree.insert(12)
-    tree.insert(11)
-    tree.insert(13)
-
-    # tree.insert(5)
+    # tree.insert(8)
+    # tree.insert(4)
+    # tree.insert(2)
+    # tree.insert(1)
     # tree.insert(3)
     # tree.insert(6)
-    # tree.insert(2)
-    # tree.insert(4)
-    # # tree.insert(None)
+    # tree.insert(5)
     # tree.insert(7)
+    # tree.insert(10)
+    # tree.insert(14)
+    # tree.insert(15)
+    # tree.insert(9)
+    # tree.insert(12)
+    # tree.insert(11)
+    # tree.insert(13)
+
+    tree.insert(5)
+    tree.insert(3)
+    tree.insert(6)
+    tree.insert(2)
+    tree.insert(4)
+    # tree.insert(None)
+    tree.insert(7)
 
     tree.print_inorder()
     print()
 
-    tree.delete_node(2)
+    tree.delete_node(5)
     tree.print_inorder()
