@@ -31,7 +31,7 @@ if __name__ == '__main__':
     #
     tree.print_inorder()
 
-    ans = tree.lca(1, 3)
+    ans = tree.lca(1, 9)
     print()
 
     print(ans.data)
