@@ -170,5 +170,5 @@ if __name__ == '__main__':
     tree.print_inorder()
     print()
 
-    tree.delete_node(5)
+    tree.delete_node(3)
     tree.print_inorder()
