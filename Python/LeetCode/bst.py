@@ -73,3 +73,18 @@ class BST:
         if root:
             return root.val
         return None
+
+    sumOfRange = 0
+
+    def _rangeSumBST(self, root, low, high):
+        if root:
+            if root.val in range(low, high + 1):
+                self.sumOfRange += root.val
+
+            self._rangeSumBST(root.left, low, high)
+            self._rangeSumBST(root.right, low, high)
+
+    def rangeSumBST(self, low, high):
+        self._rangeSumBST(self.root, low, high)
+        # print(self.sumOfRange)
+        return self.sumOfRange
