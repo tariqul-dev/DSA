@@ -9,7 +9,6 @@ class Graph:
                 self.graph[u] = [v]
 
 
-
 if __name__ == '__main__':
     edges = [
         (1, 2),

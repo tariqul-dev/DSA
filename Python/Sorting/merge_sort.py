@@ -2,7 +2,6 @@ def merge(numbers, low, mid, high):
     left = low
     right = mid + 1
     temp = []
-    index = 0
 
     while left <= mid and right <= high:
         if numbers[left] < numbers[right]:
