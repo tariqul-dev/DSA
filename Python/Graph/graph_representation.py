@@ -2,11 +2,15 @@ class Graph:
     def __init__(self, edges):
         self.graph = {}
 
-        for (u, v) in edges:
+        for u, v in edges:
             if u in self.graph:
                 self.graph[u].append(v)
             else:
                 self.graph[u] = [v]
+            if v in self.graph:
+                self.graph[v].append(u)
+            else:
+                self.graph[v] = [u]
 
 
 if __name__ == '__main__':

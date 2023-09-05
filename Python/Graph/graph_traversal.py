@@ -10,6 +10,10 @@ class Graph:
                 self.adjList[u].append(v)
             else:
                 self.adjList[u] = [v]
+            if v in self.adjList:
+                self.adjList[v].append(u)
+            else:
+                self.adjList[v] = [u]
 
     def bfs(self, source):
         q = deque()
