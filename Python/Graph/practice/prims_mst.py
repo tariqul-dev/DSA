@@ -21,12 +21,9 @@ class Graph:
     def prims(self, source):
         visited = [False] * self.numberOfVertex
         minHeap = []
-        #                               weight, vertex
-        heapq.heappush(minHeap, [0, source, source])
-        # visited[source] = True
-        res = 0
+        heapq.heappush(minHeap, [0, source, source])  # weight child parent
+        result = 0
         mst = []
-        cur = source
 
         while minHeap:
             weight, node, parent = heapq.heappop(minHeap)
@@ -34,32 +31,18 @@ class Graph:
             if not visited[node]:
                 visited[node] = True
                 if node != source:
-                    res += weight
+                    result += weight
                     mst.append([parent, node, weight])
 
-                # cur = node
-
-                for neighbor, w in self.adjList[node]:
+                for neighbor, w, in self.adjList[node]:
                     if not visited[neighbor]:
                         heapq.heappush(minHeap, [w, neighbor, node])
 
-        print(res)
-        print(mst)
+        return result, mst
 
 
-if __name__ == '__main__':
-    # edges = [
-    #     [0, 1, 2],
-    #     [0, 2, 1],
-    #     [1, 2, 1],
-    #     [2, 4, 2],
-    #     [2, 3, 2],
-    #     [3, 4, 1],
-    # ]
-    # v = 5
-    # e = 6
-
-    edges = [
+def main():
+    edge = [
         [0, 1, 2],
         [0, 3, 7],
         [0, 4, 6],
@@ -69,15 +52,21 @@ if __name__ == '__main__':
         [2, 4, 2],
         [3, 4, 5],
     ]
-    v = 5
-    e = 8
 
-    graph = Graph(edges, v, e)
+    vertex = 5
+    nEdge = 8
 
-    for p, c in graph.adjList.items():
-        print(f'{p} -> {c}')
+    graph = Graph(edge, vertex, nEdge)
 
-    graph.prims(0)
+    for key, value in graph.adjList.items():
+        print(f'{key} -> {value}')
 
-# output:
-# [[0, 1, 2], [1, 2, 1], [2, 4, 2], [2, 3, 3]]
+    result, mst = graph.prims(0)
+
+    print(result)
+
+    print(mst)
+
+
+if __name__ == '__main__':
+    main()
