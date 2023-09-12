@@ -18,12 +18,22 @@ if __name__ == '__main__':
     # tree.insert(11)
     # tree.insert(13)
 
-    tree.insert(4)
-    tree.insert(2)
+    # tree.insert(4)
+    # tree.insert(2)
+    # tree.insert(3)
+    # tree.insert(1)
+    # tree.insert(7)
+    # tree.insert(6)
+
+    tree.insert(8)
     tree.insert(3)
+    tree.insert(10)
     tree.insert(1)
-    tree.insert(7)
     tree.insert(6)
+    tree.insert(14)
+    tree.insert(4)
+    tree.insert(7)
+    tree.insert(13)
 
     # n = int(input())
     # for i in range(n):
@@ -31,8 +41,7 @@ if __name__ == '__main__':
     #
     tree.print_inorder()
 
-    ans = tree.lca(1, 9)
+    ans = tree.lca(1, 13)
     print()
 
     print(ans.data)
-
