@@ -4,6 +4,7 @@ using namespace std;
 
 class Graph
 {
+
 private:
     int numberOfVertex;
     vector<vector<int>> adjList;
@@ -12,7 +13,7 @@ public:
     Graph(int numberOfVertex)
     {
         this->numberOfVertex = numberOfVertex;
-        adjList.resize(numberOfVertex);
+        adjList.resize(this->numberOfVertex);
     }
 
     void addEdge(int source, int destination)
@@ -26,68 +27,59 @@ public:
         for (int i = 0; i < adjList.size(); i++)
         {
             cout << i << " -> ";
-
-            for (int j = 0; j < adjList[i].size(); j++)
+            for (auto neigbhor : adjList[i])
             {
-                cout << adjList[i][j] << " ";
+                cout << neigbhor << " ";
             }
 
             cout << endl;
         }
     }
 
-    void bfs(int source)
+    void _dfs(int source, vector<bool> &visited)
+    {
+        visited[source] = true;
+        cout << source << " -> ";
+        for (auto neighbor : adjList[source])
+        {
+            if (!visited[neighbor])
+            {
+                visited[neighbor] = true;
+                _dfs(neighbor, visited);
+            }
+        }
+    }
+
+    void dfs(int source)
     {
         vector<bool> visited(numberOfVertex, false);
 
-        visited[source] = true;
-        queue<int> q;
-        q.push(source);
-
-        while (!q.empty())
-        {
-            int data = q.front();
-            q.pop();
-
-            cout << data << " -> ";
-
-            for (auto neighbor : adjList[data])
-            {
-                if (!visited[neighbor])
-                {
-                    visited[neighbor] = true;
-                    q.push(neighbor);
-                }
-            }
-        }
+        _dfs(source, visited);
     }
 };
 
 int main()
 {
-    int n, e;
+    int v, e;
+    cin >> v >> e;
 
-    cin >> n >> e;
-
-    Graph graph = Graph(n);
+    Graph graph(v);
 
     for (int i = 0; i < e; i++)
     {
         int u, v;
         cin >> u >> v;
-
         graph.addEdge(u, v);
     }
 
     graph.print();
 
-    graph.bfs(5);
+    graph.dfs(0);
 
     return 0;
 }
 
 /*
-v e
 6 8
 
 0 1
