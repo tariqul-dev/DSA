@@ -3,29 +3,18 @@ using namespace std;
 
 int removeDuplicates(vector<int> &nums)
 {
-    vector<int> n;
-    int size = nums.size();
+    int count = 1;
 
-    for (int i = 0; i < size - 1; i++)
+    for (int i = 1; i < nums.size(); i++)
     {
-        int xOR = nums[i] ^ nums[i + 1];
-
-        if (xOR != 0)
+        if (nums[i] != nums[i - 1])
         {
-            n.push_back(nums[i]);
+            nums[count] = nums[i];
+            count++;
         }
     }
 
-    int xOr = nums[size - 1] ^ n[n.size() - 1];
-
-    if (xOr != 0)
-    {
-        n.push_back(nums[size - 1]);
-    }
-
-    nums = n;
-
-    return nums.size();
+    return count;
 }
 
 int main()

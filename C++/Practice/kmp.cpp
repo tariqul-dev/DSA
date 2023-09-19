@@ -2,47 +2,44 @@
 
 using namespace std;
 
-template <class T>
-void print_v(vector<T> &vect)
-{
-    for (auto element : vect)
-    {
-        cout << element << " ";
-    }
-
-    cout << endl;
-}
-
 vector<int> createLps(string pattern)
 {
-    vector<int> arr(pattern.size());
+    int size = pattern.size();
 
-    arr[0] = 0;
+    vector<int> lps(size);
     int index = 0, i = 1;
 
-    while (i < pattern.size())
+    lps[0] = 0;
+
+    while (i < size)
     {
         if (pattern[index] == pattern[i])
-            arr[i++] = ++index;
-
+        {
+            lps[i] = index + 1;
+            index++;
+            i++;
+        }
         else if (index != 0)
-            index = arr[--index];
+        {
+            index = lps[index - 1];
+        }
         else
-            arr[i++] = index;
+        {
+            lps[i] = index;
+            i++;
+        }
     }
 
-    return arr;
+    return lps;
 }
 
-void kmp(string text, string pattern)
+int kmp(string text, string pattern)
 {
     vector<int> lps = createLps(pattern);
 
-    print_v(lps);
-
     int i = 0, j = 0;
-
-    bool isFound = false;
+    // i for text
+    // j for pattern
 
     while (i < text.size())
     {
@@ -61,22 +58,15 @@ void kmp(string text, string pattern)
 
         if (j == pattern.size())
         {
-            isFound = true;
-            break;
+            cout << "Found at: " << i - pattern.size() << endl;
+            j = lps[j - 1];
         }
     }
-
-    if (isFound)
-        cout << "Found" << endl;
-    else
-        cout << "Not Found" << endl;
 }
 
 int main()
 {
-
-    string text = "ababaaab";
-    string pattern = "ababd";
+    string text = "sadbutsad", pattern = "sad";
 
     kmp(text, pattern);
 
