@@ -6,13 +6,22 @@ string convertToTitle(int columnNumber)
 {
     string result = "";
 
-    cout << 'A' + columnNumber - 1 << endl;
-    cout << char('A' + columnNumber - 1) << endl;
+    while (columnNumber > 0)
+    {
+        columnNumber--;
+        char c = 'A' + columnNumber % 26;
+        result += c;
+        columnNumber /= 26;
+    }
+
+    reverse(result.begin(), result.end());
+
+    return result;
 }
 
 int main()
 {
-    int columnNumber = 1;
+    int columnNumber = 53;
 
     cout << convertToTitle(columnNumber) << endl;
 
