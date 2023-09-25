@@ -6,17 +6,11 @@ int removeDuplicates(vector<int> &nums)
 {
     int index = 0;
 
-    for (int i = 1; i < nums.size(); i++)
+    for (int num : nums)
     {
-        if (nums[index] != nums[i])
+        if (index < 2 || num != nums[index - 2])
         {
-            nums[index] = nums[i];
-            index++;
-        }
-        else
-        {
-            swap(nums[i], nums[index]);
-            index++;
+            nums[index++] = num;
         }
     }
 
