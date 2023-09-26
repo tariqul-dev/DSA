@@ -62,11 +62,77 @@ int getMeritMemoization(int day, int last, vector<vector<int>> &tasks, vector<ve
     return merit;
 }
 
+int getMeritTabulation(int n, vector<vector<int>> &points)
+{
+    vector<vector<int>> dp(n, vector<int>(numberOfTask + 1, 0));
+
+    dp[0][0] = max(points[0][1], points[0][2]);
+    dp[0][1] = max(points[0][0], points[0][2]);
+    dp[0][2] = max(points[0][1], points[0][0]);
+    dp[0][3] = max(points[0][0], max(points[0][1], points[0][2]));
+
+    for (int day = 1; day < n; day++)
+    {
+
+        for (int last = 0; last <= numberOfTask; last++)
+        {
+
+            int merit = 0;
+
+            for (int i = 0; i < numberOfTask; i++)
+            {
+
+                if (i != last)
+                {
+                    int point = points[day][i] + dp[day - 1][i];
+                    merit = max(merit, point);
+                }
+            }
+
+            dp[day][last] = merit;
+        }
+    }
+
+    return dp[n - 1][3];
+}
+
+int getMeritSpaceOptimized(int n, vector<vector<int>> &points)
+{
+    vector<int> dp(numberOfTask + 1, 0);
+    dp[0] = max(points[0][1], points[0][2]);
+    dp[1] = max(points[0][0], points[0][2]);
+    dp[2] = max(points[0][0], points[0][1]);
+    dp[3] = max(points[0][0], max(points[0][1], points[0][2]));
+
+    for (int day = 1; day < n; day++)
+    {
+        vector<int> temp(numberOfTask + 1, 0);
+
+        for (int last = 0; last <= numberOfTask; last++)
+        {
+            temp[last] = 0;
+
+            for (int task = 0; task < numberOfTask; task++)
+            {
+                if (task != last)
+                {
+                    temp[last] = max(points[day][task] + dp[task], temp[last]);
+                }
+            }
+        }
+        dp = temp;
+    }
+
+    return dp[numberOfTask];
+}
+
 int ninjaTraining(int n, vector<vector<int>> &points)
 {
     // return getMerit(n - 1, 3, points);
-    vector<vector<int>> dp(n, vector<int>(numberOfTask + 1, -1));
-    return getMeritMemoization(n - 1, 3, points, dp);
+    // vector<vector<int>> dp(n, vector<int>(numberOfTask + 1, -1));
+    // return getMeritMemoization(n - 1, 3, points, dp);
+
+    return getMeritSpaceOptimized(n, points);
 }
 
 int main()
