@@ -15,20 +15,17 @@ void print(vector<int> result)
 vector<int> dailyTemperatures(vector<int> &temperatures)
 {
     vector<int> ans(temperatures.size(), 0);
+    stack<int> st;
 
-    for (int i = 0; i < temperatures.size(); i++)
+    for (int i = temperatures.size() - 1; i >= 0; i--)
     {
-        int count = 0;
+        while (!st.empty() && temperatures[st.top()] <= temperatures[i])
+            st.pop();
 
-        for (int j = i + 1; j < temperatures.size(); j++)
-        {
-            if (temperatures[i] < temperatures[j])
-            {
-                count = abs(j - i);
-                break;
-            }
-        }
-        ans[i] = count;
+        if (!st.empty())
+            ans[i] = st.top() - i;
+
+        st.push(i);
     }
 
     return ans;
