@@ -8,28 +8,73 @@ void print(vector<int> ans)
         cout << i << " ";
     cout << endl;
 }
+void print(vector<vector<int>> ans)
+{
+    for (auto i : ans)
+    {
+        for (int x : i)
+            cout << x << " ";
+        cout << endl;
+    }
+
+    cout << endl;
+}
+
+void print(map<int, int> ans)
+{
+    for (auto i : ans)
+        cout << i.first << " -> " << i.second << endl;
+
+    cout << endl;
+}
 
 vector<int> topKFrequent(vector<int> &nums, int k)
 {
-    map<int, int> freq;
+    // map and priority queue
 
+    // map<int, int> freq;
+
+    // vector<int> ans;
+
+    // priority_queue<pair<int, int>> pq;
+
+    // for (int num : nums)
+    // {
+    //     freq[num]++;
+    // }
+
+    // for (auto m : freq)
+    // {
+    //     pq.push({m.second, m.first});
+
+    //     if (pq.size() > freq.size() - k)
+    //     {
+    //         ans.push_back(pq.top().second);
+    //         pq.pop();
+    //     }
+    // }
+
+    // return ans;
+
+    // optimized
+
+    vector<vector<int>> freq(nums.size() + 1);
+    map<int, int> freqMap;
     vector<int> ans;
 
-    priority_queue<pair<int, int>> pq;
+    for (int i = 0; i < nums.size(); i++)
+        freqMap[nums[i]]++;
 
-    for (int num : nums)
+    for (auto m : freqMap)
+        freq[m.second].push_back(m.first);
+
+    for (int i = freq.size() - 1; i >= 0 && ans.size() < k; i--)
     {
-        freq[num]++;
-    }
-
-    for (auto m : freq)
-    {
-        pq.push({m.second, m.first});
-
-        if (pq.size() > freq.size() - k)
+        for (auto ele : freq[i])
         {
-            ans.push_back(pq.top().second);
-            pq.pop();
+            ans.push_back(ele);
+            if (ans.size() == k)
+                return ans;
         }
     }
 
@@ -39,8 +84,8 @@ vector<int> topKFrequent(vector<int> &nums, int k)
 int main()
 {
 
-    vector<int> nums = {1, 1, 1, 2, 3, 3, 2, 3};
-    int k = 2;
+    vector<int> nums = {1};
+    int k = 1;
 
     vector<int> ans = topKFrequent(nums, k);
 
