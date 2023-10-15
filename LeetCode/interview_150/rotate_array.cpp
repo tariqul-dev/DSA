@@ -15,23 +15,33 @@ void reverse(vector<int> &nums, int low, int high)
 
 void rotate(vector<int> &nums, int k)
 {
+    // with extra space
     int n = nums.size();
+    vector<int> temp(n);
 
-    if (n <= 1)
-        return;
+    for (int i = 0; i < n; i++)
+        temp[(i + k) % n] = nums[i];
 
-    cout << "N: " << n << " K: " << k << endl;
+    nums = temp;
 
-    // if (k > n)
+    // Optimal solution
+    // int n = nums.size();
+
+    // if (n <= 1)
+    //     return;
+
+    // cout << "N: " << n << " K: " << k << endl;
+
+    // // if (k > n)
+    // //     k = n - k % n - 1;
+    // // else
     //     k = n - k % n - 1;
-    // else
-        k = n - k % n - 1;
 
-    cout << "N: " << n << " K: " << k << endl;
+    // cout << "N: " << n << " K: " << k << endl;
 
-    reverse(nums, 0, k);
-    reverse(nums, k + 1, n - 1);
-    reverse(nums, 0, n - 1);
+    // reverse(nums, 0, k);
+    // reverse(nums, k + 1, n - 1);
+    // reverse(nums, 0, n - 1);
 }
 
 int main()
