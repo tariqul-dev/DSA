@@ -1,0 +1,35 @@
+{
+    "error": "0",
+    "valid": "true",
+    "statuscode": "0",
+    "message": "Success",
+    "data": [
+        {
+            "compnayid": "35450",
+            "secretcode": "sum34133",
+            "comusracc": "104252",
+            "adminusertype": "True",
+            "crdt": "9/12/2012 12:38:00 PM",
+            "newdesign": "False",
+            "userauth": "E9B9CFCC78BDA89FE75E65E94A6BE5565130207CD6C558838C8D749A7EC0C044",
+            "contactperson": "Sumi",
+            "compnayname": "Bdjobs Test Account - Az1",
+            "email": "ashraful.azhar@gmail.com",
+            "user_name": "sumi18",
+            "billingcontact": "test-11",
+            "contactpersoncountry": "test-11",
+            "loginid": "6948035",
+            "CPCity": "Gaibandha",
+            "ComCODE": "Q3JwM0FwaVRva2VuTm8zNzQ4Mw==",
+            "ComIDDecode": "E3298E3B",
+            "SalesPerson": {
+                "SPName": "",
+                "SPDesignation": "",
+                "SPContactPhone": "",
+                "SPContactEmail": "",
+                "SPImage": ""
+            }
+        }
+    ],
+    "common": null
+}
