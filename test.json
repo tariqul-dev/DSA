@@ -1,0 +1,46 @@
+ ServiceDetailsModel("Monthly Application Limit",
+"While others are confined by limitations, with Premium, you can apply for as many jobs as your ambition desires. No more counting, restricting, or second-guessing your career choices. Whether you're exploring diverse career paths or hunting for that one perfect opportunity, your options are endless with Premium. So why settle for less when you can have it all? Choose the Premium Package today, and let your potential soar beyond limits."),
+//ServiceDetailsModel("Application Supercharge","Application Supercharge puts you in the spotlight, giving you an undeniable advantage in the competitive job market. Your application rises above the rest, like a shining star of talent and potential, catching the eyes of employers instantly. No more getting lost in the shuffle; your qualifications shine like a bright star, demanding attention."),
+            ServiceDetailsModel("See Who Viewed My Profile",
+"This super power gives you ability to see behind the curtain, to know which employers are taking a closer look at your profile. You're no longer in the dark about your job applications. Instead, you're in control, with real-time visibility into which employers have shown an interest in you."),
+            ServiceDetailsModel("Direct Message to Employers",
+"Don't leave your career to chance. Take charge of your job search and make your voice heard. Choose Message Employers Directly, and let your passion and determination shine through. Your dream job is just a message away, and with this feature, you're not just an applicant; you're a standout candidate with a compelling story to tell."),
+            ServiceDetailsModel("View Who Shortlisted Me",
+" From now don't settle for uncertainty when you can have clarity and control over your job application status. It givesyou insights about when the employer has viewed your application."),
+            ServiceDetailsModel("Upload Video CV",
+"Premium package let the power to transform your job application by uploading a full-length Video CV directly from your mobile device.  Present your skills, experience, and passion in a dynamic and engaging way with your Video CV."),
+            ServiceDetailsModel("See Job Details After Deadline",
+"In the dynamic world of job hunting, information is key, and timely insights can make all the difference. With \"Post-Deadline Access,\" you have the power to unlock job post descriptions even after the application deadline has passed. Don't miss out on valuable opportunities; keep the door to your dream job open with Post-Deadline Access."))
+
+[
+    {
+        "title": "Monthly Application Limit",
+        "description": "While others are confined by limitations, with Premium, you can apply for as many jobs as your ambition desires. No more counting, restricting, or second-guessing your career choices. Whether you're exploring diverse career paths or hunting for that one perfect opportunity, your options are endless with Premium. So why settle for less when you can have it all? Choose the Premium Package today, and let your potential soar beyond limits.",
+        "iconUrl" : "www.icon.com"
+    },
+    {
+        "title": "See Who Viewed My Profile",
+        "description": "This super power gives you ability to see behind the curtain, to know which employers are taking a closer look at your profile. You're no longer in the dark about your job applications. Instead, you're in control, with real-time visibility into which employers have shown an interest in you.",
+        "iconUrl" : "www.icon.com"
+    },
+    {
+        "title": "Direct Message to Employers",
+        "description": "Don't leave your career to chance. Take charge of your job search and make your voice heard. Choose Message Employers Directly, and let your passion and determination shine through. Your dream job is just a message away, and with this feature, you're not just an applicant; you're a standout candidate with a compelling story to tell.",
+        "iconUrl" : "www.icon.com"
+    },
+    {
+        "title": "View Who Shortlisted Me",
+        "description": " From now don't settle for uncertainty when you can have clarity and control over your job application status. It givesyou insights about when the employer has viewed your application.",
+        "iconUrl" : "www.icon.com"
+    },
+    {
+        "title": "Upload Video CV",
+        "description": "Premium package let the power to transform your job application by uploading a full-length Video CV directly from your mobile device.  Present your skills, experience, and passion in a dynamic and engaging way with your Video CV.",
+        "iconUrl" : "www.icon.com"
+    },
+    {
+        "title": "See Job Details After Deadline",
+        "description": "In the dynamic world of job hunting, information is key, and timely insights can make all the difference. With \"Post-Deadline Access,\" you have the power to unlock job post descriptions even after the application deadline has passed. Don't miss out on valuable opportunities; keep the door to your dream job open with Post-Deadline Access.",
+        "iconUrl" : "www.icon.com"
+    },
+]
