@@ -25,7 +25,7 @@ public:
         root = NULL;
     }
 
-    void createTree(int val)
+    Node* createTree(int val)
     {
         // Node *newNode = new Node(val);
 
@@ -35,8 +35,12 @@ public:
         }
 
         if (val < root->val){
-            // root->left = 
+            root->left = createTree(val);
+        }else {
+            root->right = createTree(val);
         }
+
+        return root;
     }
 };
 
