@@ -27,11 +27,72 @@ int solve(int n, int k)
     return dp[n][k] = result;
 }
 
+int tablulation(int n, int k)
+{
+
+    vector<vector<int>> dp(n + 1, vector<int>(k + 1));
+
+    for (int i = 0; i <= n; i++)
+    {
+        dp[i][0] = 1;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+
+        for (int j = 1; j <= k; j++)
+        {
+
+            int result = 0;
+
+            for (int inv = 0; inv <= min(i - 1, j); inv++)
+            {
+                result = (result + dp[i - 1][j - inv]) % mod;
+            }
+
+            dp[i][j] = result;
+        }
+    }
+
+    return dp[n][k];
+}
+
+int optimized(int n, int k)
+{
+    vector<vector<int>> dp(n + 1, vector<int>(k + 1));
+
+    for (int i = 0; i <= n; i++)
+    {
+        dp[i][0] = 1;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        long long sum = 1;
+        for (int j = 1; j <= k; j++)
+        {
+            sum += dp[i - 1][j];
+            if (j >= i)
+            {
+                sum -= dp[i - 1][j - i];
+            }
+
+            dp[i][j] = sum % mod;
+        }
+    }
+
+    return dp[n][k];
+}
+
 int kInversePairs(int n, int k)
 {
-    memset(dp, -1, sizeof(dp));
+    // memset(dp, -1, sizeof(dp));
 
-    return solve(n, k);
+    // return solve(n, k);
+
+    // return tablulation(n, k);
+
+    return optimized(n, k);
 }
 
 int main()
