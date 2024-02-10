@@ -4,7 +4,7 @@ using namespace std;
 
 int dp[1000][1000];
 
-bool check(int i, int j, string s)
+bool check(int i, int j, string &s)
 {
 
     if (i > j)
