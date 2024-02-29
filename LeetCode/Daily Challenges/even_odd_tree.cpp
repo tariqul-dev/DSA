@@ -2,6 +2,44 @@
 
 using namespace std;
 
+class TreeNode
+{
+public:
+    int val;
+
+    TreeNode *left, *right;
+
+    TreeNode(int val)
+    {
+        this->val = val;
+        left = right = NULL;
+    }
+};
+
+void insert(TreeNode *&root, int val)
+{
+    if (!root)
+    {
+        root = new TreeNode(val);
+        return;
+    }
+
+    if (val < root->val)
+        insert(root->left, val);
+    else
+        insert(root->right, val);
+}
+
+void print(TreeNode *root)
+{
+    if (root)
+    {
+        print(root->left);
+        cout << root->val << " ";
+        print(root->right);
+    }
+}
+
 bool isEvenOddTree(TreeNode *root)
 {
     queue<TreeNode *> q;
