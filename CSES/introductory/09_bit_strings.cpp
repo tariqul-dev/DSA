@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    long long MOD = 10e9 + 7;
+    long long MOD = 1e9 + 7;
     long long n;
     cin >> n;
 
@@ -12,7 +12,7 @@ int main()
 
     for (long long i = 1; i <= n; i++)
     {
-        result = ((result % MOD) * (2 % MOD)) % MOD;
+        result = (result * 2) % MOD;
     }
 
     cout << result << endl;
