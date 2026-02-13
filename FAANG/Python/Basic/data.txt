@@ -1,0 +1,2 @@
+This is data file
+You are gonna learn file system works in python
