@@ -12,7 +12,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-random_df = pd.read_csv('./random_dataset.csv')
+random_df = pd.read_csv('./data/random_dataset.csv')
 
 # print(random_df.head())
 
